@@ -1,0 +1,115 @@
+{
+  "name": "@mbss-react/core",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "keywords": [
+    "MBSS-Library core package for react"
+  ],
+  "author": "Michael Bigalke & Sven Stiels",
+  "license": "ISC",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.3",
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-brands-svg-icons": "^5.15.3",
+    "@fortawesome/free-regular-svg-icons": "^5.15.3",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
+    "@loadable/component": "^5.15.0",
+    "@material-ui/core": "^4.12.1",
+    "@material-ui/lab": "^4.0.0-alpha.60",
+    "antd": "^4.16.7",
+    "axios": "^0.21.1",
+    "bootstrap": "^4.6.0",
+    "customize-cra": "^1.0.0",
+    "less": "^4.1.1",
+    "less-loader": "^7.3.0",
+    "meilisearch": "^0.19.0",
+    "moment-range": "^4.0.2",
+    "p-min-delay": "^4.0.0",
+    "perfect-scrollbar": "^1.5.1",
+    "react": "^17.0.2",
+    "react-app-rewired": "^2.1.8",
+    "react-bootstrap": "^1.6.1",
+    "react-color": "^2.19.3",
+    "react-dom": "^17.0.2",
+    "react-ga": "^3.3.0",
+    "react-google-login": "^5.2.2",
+    "react-redux": "^7.2.4",
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.1.0",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-freeze": "^0.1.7",
+    "redux-thunk": "^2.3.0",
+    "reselect": "^4.0.0",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-less": "^2.4.1",
+    "semantic-ui-react": "^2.0.3",
+    "sjs-base-model": "^1.9.1",
+    "uuid": "^8.3.2",
+    "web-vitals": "^2.1.0"
+  },
+  "scripts": {
+    "---------- HELPERS -------------------------------------------------------------------------------------": "",
+    "generate": "node ./tools/generate.js",
+    "---------- TESTING -------------------------------------------------------------------------------------": "",
+    "test": "cross-env CLIENT_ENV=test react-app-rewired test",
+    "ts": "tsc --noEmit",
+    "ts:watch": "npm run ts -- --watch",
+    "lint": "eslint 'src/**/*.{js,ts,tsx}' --fix",
+    "--------------------------------------------------------------------------------------------------------": ""
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-nullish-coalescing-operator": "7.14.5",
+    "@babel/plugin-proposal-optional-chaining": "7.14.5",
+    "@simbathesailor/babel-plugin-use-what-changed": "^2.1.0",
+    "@simbathesailor/use-what-changed": "^2.0.0",
+    "@types/loadable__component": "^5.13.4",
+    "@types/lodash": "^4.14.171",
+    "@types/node": "^16.3.2",
+    "@types/react": "^17.0.14",
+    "@types/react-color": "^3.0.5",
+    "@types/react-dom": "^17.0.9",
+    "@types/react-redux": "7.1.18",
+    "@types/react-router-dom": "5.1.8",
+    "@types/uuid": "^8.3.1",
+    "@typescript-eslint/eslint-plugin": "^4.28.3",
+    "@typescript-eslint/parser": "^4.28.3",
+    "babel-plugin-import": "^1.13.3",
+    "cross-env": "7.0.3",
+    "eslint": "^7.30.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "4.2.0",
+    "generate-template-files": "3.1.0",
+    "gh-pages": "^3.2.3",
+    "husky": "^7.0.1",
+    "node-sass": "^6.0.1",
+    "prettier": "2.3.2",
+    "pretty-quick": "^3.1.1",
+    "react-scripts": "4.0.3",
+    "typescript": "^4.3.5"
+  }
+}

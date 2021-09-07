@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@assets/*": ["src/assets/*"],
+      "@components": ["src/components"],
+      "@hooks": ["src/hooks"],
+      "@environments": ["src/environments"],
+      "@helpers": ["src/helpers"],
+      "@models": ["src/models"],
+      "@utilities": ["src/utilities"]
+    }
+  }
+}
