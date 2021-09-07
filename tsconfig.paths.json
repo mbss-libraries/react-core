@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "paths": {
+      // "@assets/*": ["src/assets/*"],
+      // "@components": ["src/components", "node_modules/@mbss-react/core/src/components"],
+      // "@hooks": ["src/hooks", "node_modules/@mbss-react/core/src/hooks"],
+      // "@environments": ["src/environments", "node_modules/@mbss-react/core/src/environments"],
+      // "@helpers": ["src/helpers", "node_modules/@mbss-react/core/src/helpers"],
+      // "@models": ["src/models", "node_modules/@mbss-react/core/src/models"],
+      // "@utilities": ["src/utilities", "node_modules/@mbss-react/core/src/utilities"]
+    }
+  }
+}
