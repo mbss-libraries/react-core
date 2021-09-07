@@ -1,1 +1,3 @@
-export { default as HelloWorld } from "./hello-world";
+import Button from "./components/Button";
+
+export { Button };
