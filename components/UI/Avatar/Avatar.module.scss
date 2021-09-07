@@ -1,0 +1,48 @@
+@import '../../variables';
+
+.bg-zalando {
+  color: #f56a00 !important;
+  background-color: #fde3cf !important;
+}
+
+.border-primary {
+  border: 1px solid $primary !important;
+}
+.bg-primary {
+  background-color: $primary !important;
+}
+
+.border-secondary {
+  border: 1px solid $secondary !important;
+}
+.bg-secondary {
+  background-color: $secondary !important;
+}
+
+.border-success {
+  border: 1px solid $success !important;
+}
+.bg-success {
+  background-color: $success !important;
+}
+
+.border-warning {
+  border: 1px solid $warning !important;
+}
+.bg-warning {
+  background-color: $warning !important;
+}
+
+.border-danger {
+  border: 1px solid $danger !important;
+}
+.bg-danger {
+  background-color: $danger !important;
+}
+
+.border-info {
+  border: 1px solid $info !important;
+}
+.bg-info {
+  background-color: $info !important;
+}
