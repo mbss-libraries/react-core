@@ -6,9 +6,11 @@
   "module": "build/index.esm.js",
   "types": "build/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "---------- HELPERS -------------------------------------------------------------------------------------": "",
+    "generate": "node ./tools/generate.js",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
+    "---------- PRODUCTION -------------------------------------------------------------------------------------": "",
     "build": "rollup -c",
     "prepublishOnly": "npm build"
   },
@@ -33,6 +35,7 @@
     "@storybook/react": "^6.3.8",
     "@types/react": "^17.0.20",
     "babel-loader": "^8.2.2",
+    "generate-template-files": "^3.2.0",
     "postcss": "^8.3.6",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -53,6 +56,7 @@
     "@fortawesome/free-regular-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
+    "antd": "^4.16.13",
     "bootstrap": "^5.1.1",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.3"
