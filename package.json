@@ -12,6 +12,7 @@
     "build-storybook": "build-storybook",
     "---------- PRODUCTION -------------------------------------------------------------------------------------": "",
     "build": "rollup -c",
+    "prepare": "npm run build",
     "prepublishOnly": "npm build"
   },
   "np": {
