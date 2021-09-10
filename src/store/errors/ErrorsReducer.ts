@@ -2,8 +2,7 @@ import { baseReducer, IAction, ErrorModel } from 'src/utilities';
 import { Reducer } from 'redux';
 import ErrorsAction from './ErrorsAction';
 
-export const initialState: IErrorsState = {};
-
+const initialState: IErrorsState = {};
 export const errorsReducer: Reducer = baseReducer(initialState, {
   [ErrorsAction.ADD](state: IErrorsState, action: IAction<ErrorModel>): IErrorsState {
     if (action.payload) {

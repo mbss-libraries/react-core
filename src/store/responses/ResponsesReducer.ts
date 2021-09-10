@@ -7,8 +7,7 @@
 import { baseReducer } from '@utilities';
 import { Reducer } from 'redux';
 
-export const initialState: IResponsesState = {};
-
+const initialState: IResponsesState = {};
 export const responsesReducer: Reducer = baseReducer(initialState, {});
 
 export interface IResponsesState {
