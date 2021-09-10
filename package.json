@@ -1,5 +1,5 @@
 {
-  "name": "@mbss-react/core",
+  "name": "@mbss/react-core",
   "version": "1.0.0",
   "description": "A stroybook 6 with TypeScript demo",
   "main": "build/index.js",
@@ -12,8 +12,7 @@
     "build-storybook": "build-storybook",
     "---------- PRODUCTION -------------------------------------------------------------------------------------": "",
     "build": "rollup -c",
-    "prepare": "npm run build",
-    "prepublishOnly": "npm build"
+    "prepare": "npm run build"
   },
   "np": {
     "publish": false,
