@@ -6,6 +6,8 @@
   "module": "build/index.esm.js",
   "types": "build/index.d.ts",
   "scripts": {
+    "---------- PUBLISH -------------------------------------------------------------------------------------": "",
+    "publish": "npm publish --access public",
     "---------- HELPERS -------------------------------------------------------------------------------------": "",
     "generate": "node ./tools/generate.js",
     "storybook": "start-storybook -p 6006",
