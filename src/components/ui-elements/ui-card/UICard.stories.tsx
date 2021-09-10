@@ -13,4 +13,7 @@ const Template: Story<UICardProps> = (args) => <UICard {...args} />;
 
 // Reuse that template for creating different stories
 export const Primary = Template.bind({});
-Primary.args = { children: 'Test' };
+Primary.args = { children: 'Test', onClick: undefined };
+
+export const Clickable = Template.bind({});
+Clickable.args = { children: 'Click', hoverable: true, onClick: () => null };

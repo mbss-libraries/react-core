@@ -7,10 +7,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '@fortawesome/fontawesome-free/js/all';
 import { MenuClickEventHandler } from 'rc-menu/lib/interface.js';
 
-const { SubMenu, Item } = Menu;
+const { Item, SubMenu } = Menu;
 
 export interface SidenavItemProps {
   key: string;
+  title?: string;
+  hasSubItems?: boolean;
   icon?: IconName;
   onClick?: MenuClickEventHandler;
   className?: string;
@@ -18,17 +20,17 @@ export interface SidenavItemProps {
 }
 
 export const SidenavItem: React.FC<SidenavItemProps> = (props: React.PropsWithChildren<SidenavItemProps>) => {
-  const { key, icon, onClick, children, className } = props;
+  const { key, title, hasSubItems, icon, onClick, children, className, ...other } = props;
+  if (hasSubItems) {
+    return (
+      <SubMenu key={key} className={className} icon={icon && <FontAwesomeIcon icon={icon} />} title={title} {...other}>
+        {children}
+      </SubMenu>
+    );
+  }
   return (
-    <Item key={key} className={className} onClick={onClick} icon={icon && <FontAwesomeIcon icon={icon} />}>
-      {children}
+    <Item key={key} className={className} onClick={onClick} icon={icon && <FontAwesomeIcon icon={icon} />} {...other}>
+      {title ?? children}
     </Item>
   );
 };
-
-{
-  /* <SubMenu key="sub2" icon={<TeamOutlined />} title="Team">
-<Menu.Item key="6">Team 1</Menu.Item>
-<Menu.Item key="8">Team 2</Menu.Item>
-</SubMenu> */
-}

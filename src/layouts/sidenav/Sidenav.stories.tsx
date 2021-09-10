@@ -19,12 +19,12 @@ Basic.args = {
     <SidenavItem key="1" icon="home">
       Seite 1
     </SidenavItem>,
-    <SidenavItem key="2" icon="bookmark">
-      Seite 2
+    <SidenavItem key="2" hasSubItems icon="bookmark" title="Seite 2">
+      <SidenavItem key="3" icon="user">
+        Seite 2.1
+      </SidenavItem>
     </SidenavItem>,
-    <SidenavItem key="3" icon="user">
-      Seite 3
-    </SidenavItem>,
+    <SidenavItem key="4" icon="home" title="Seite 3" />,
   ],
 };
 

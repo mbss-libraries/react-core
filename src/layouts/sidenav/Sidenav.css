@@ -3,3 +3,9 @@
   margin: 16px;
   background: rgba(255, 255, 255, 0.3);
 }
+
+.avatar-container {
+  margin: 0.5rem;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+}

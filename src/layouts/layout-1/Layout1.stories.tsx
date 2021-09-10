@@ -4,8 +4,10 @@ import { Story } from '@storybook/react';
 import { Layout1, Layout1Props } from './Layout1';
 import { Sidenav } from '../sidenav/Sidenav';
 import { SidenavItem } from '../sidenav-item/SidenavItem';
-import { Footer, Header } from 'antd/lib/layout/layout';
+import { Footer } from 'antd/lib/layout/layout';
 import Breadcrumb from 'antd/lib/breadcrumb';
+import { Header } from '../header/Header';
+import { PageHeader } from '../page-header/PageHeader';
 
 export default {
   title: 'Layout/Layout1',
@@ -31,16 +33,10 @@ const Template2: Story<Layout1Props> = (args) => (
         </SidenavItem>
       </Sidenav>
     }
-    header={<Header className="site-layout-background" style={{ padding: 0 }} />}
+    header={<Header onSidenavTriggerClick={() => null} />}
     footer={<Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>}
   >
-    <Breadcrumb style={{ margin: '16px 0' }}>
-      <Breadcrumb.Item>User</Breadcrumb.Item>
-      <Breadcrumb.Item>Bill</Breadcrumb.Item>
-    </Breadcrumb>
-    <div className="site-layout-background" style={{ padding: 24, minHeight: 360, height: '100%' }}>
-      Bill is a cat.
-    </div>
+    <PageHeader title="Example" subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit" />
   </Layout1>
 );
 // Reuse that template for creating different stories

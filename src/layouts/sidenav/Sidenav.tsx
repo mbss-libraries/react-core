@@ -6,13 +6,14 @@ import 'antd/dist/antd.css';
 
 import { Layout, Menu, MenuTheme } from 'antd';
 import { CollapseType } from 'antd/lib/layout/Sider';
+import MenuItem from 'antd/lib/menu/MenuItem';
 
-const { Header, Content, Footer, Sider } = Layout;
-const { SubMenu } = Menu;
-
+const { Sider } = Layout;
 export interface SidenavProps {
   collapsed?: boolean;
   onCollapse?(collapsed: boolean, type: CollapseType): void;
+  avatarContent?: React.ReactNode;
+  avatarContentStyle?: React.CSSProperties;
   theme?: MenuTheme;
   className?: string;
   logo?: React.ReactNode;
@@ -20,25 +21,18 @@ export interface SidenavProps {
 }
 
 export const Sidenav: React.FC<SidenavProps> = (props: React.PropsWithChildren<SidenavProps>) => {
-  const { collapsed, onCollapse, theme, children, logo, className } = props;
+  const { collapsed, onCollapse, avatarContent, avatarContentStyle, theme, children, logo, className } = props;
+
   return (
-    <Sider collapsible collapsed={collapsed} onCollapse={onCollapse} trigger={null}>
+    <Sider className={className} trigger={null} collapsible collapsed={collapsed} onCollapse={onCollapse}>
       {logo ? logo : <div style={{ height: '1rem' }} />}
-      <Menu theme={theme}>
+      {avatarContent && (
+        <div className="avatar-container" style={{ backgroundColor: 'rgba(255, 255, 255, 0.3)', ...avatarContentStyle }}>
+          {avatarContent}
+        </div>
+      )}
+      <Menu theme={theme} mode="inline">
         {children}
-        {/* <Menu.Item key="2">Option 2</Menu.Item> */}
-        {/* <Menu.Item key="2" icon={<DesktopOutlined />}>
-          Option 2
-        </Menu.Item>
-        <SubMenu key="sub1" icon={<UserOutlined />} title="User">
-          <Menu.Item key="3">Tom</Menu.Item>
-          <Menu.Item key="4">Bill</Menu.Item>
-          <Menu.Item key="5">Alex</Menu.Item>
-        </SubMenu>
-       
-        <Menu.Item key="9" icon={<FileOutlined />}>
-          Files
-        </Menu.Item> */}
       </Menu>
     </Sider>
   );
