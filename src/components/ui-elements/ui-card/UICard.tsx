@@ -11,7 +11,12 @@ export interface UICardProps {
 export const UICard: React.FC<UICardProps> = (props: React.PropsWithChildren<UICardProps>) => {
   const { hoverable, className, style, onClick } = props;
   return (
-    <Card hoverable={hoverable} className={[className].join(' ')} onClick={onClick} style={{ borderRadius: '0.25rem', ...style }}>
+    <Card
+      hoverable={hoverable}
+      className={[className].join(' ')}
+      onClick={onClick}
+      style={{ borderColor: '#bdc3c7', borderRadius: '0.25rem', ...style }}
+    >
       {props.children}
     </Card>
   );
