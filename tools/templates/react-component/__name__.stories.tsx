@@ -14,6 +14,3 @@ const Template: Story<__name__Props> = (args) => <__name__ {...args} />;
 // Reuse that template for creating different stories
 export const Basic = Template.bind({});
 Basic.args = {};
-
-export const Primary = Template.bind({});
-Primary.args = { };

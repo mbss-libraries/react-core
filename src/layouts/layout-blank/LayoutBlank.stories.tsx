@@ -1,10 +1,10 @@
-import React from "react";
-import { Meta } from "@storybook/react/types-6-0";
-import { Story } from "@storybook/react";
-import { LayoutBlank, LayoutBlankProps } from "./LayoutBlank";
+import React from 'react';
+import { Meta } from '@storybook/react/types-6-0';
+import { Story } from '@storybook/react';
+import { LayoutBlank, LayoutBlankProps } from './LayoutBlank';
 
 export default {
-  title: "???/LayoutBlank",
+  title: 'Layout/LayoutBlank',
   component: LayoutBlank,
 } as Meta;
 
@@ -16,4 +16,4 @@ export const Basic = Template.bind({});
 Basic.args = {};
 
 export const Primary = Template.bind({});
-Primary.args = { };
+Primary.args = {};
