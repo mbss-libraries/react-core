@@ -18,7 +18,7 @@ export interface Layout1Props {
 export const Layout1: React.FC<Layout1Props> = (props: React.PropsWithChildren<Layout1Props>) => {
   const { sidenav, header, footer, children, className } = props;
   return (
-    <Layout style={{ minHeight: '100vh', width: '100vw' }}>
+    <Layout style={{ minHeight: '100vh', minWidth: '100vw' }}>
       {sidenav}
       <Layout className="site-layout">
         {header}
