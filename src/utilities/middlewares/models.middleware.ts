@@ -40,4 +40,4 @@
 //   };
 
 // export default modelsMiddleware;
-export default '';
+export const test2 = '';

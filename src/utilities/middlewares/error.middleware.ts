@@ -4,7 +4,7 @@ import { IAction, ErrorModel } from '@utilities';
 import { Dispatch, Middleware } from 'redux';
 import ErrorsAction from 'src/store/errors/ErrorsAction';
 
-const errorMiddleware = (): Middleware => () => (next: Dispatch) => (action: IAction<any>): void => {
+export const errorMiddleware = (): Middleware => () => (next: Dispatch) => (action: IAction<any>): void => {
   if (action.error) {
     const errorAction = action as Required<IAction<ErrorModel>>;
     next(ErrorsAction.add(errorAction.payload));
@@ -12,5 +12,3 @@ const errorMiddleware = (): Middleware => () => (next: Dispatch) => (action: IAc
 
   next(action);
 };
-
-export default errorMiddleware;

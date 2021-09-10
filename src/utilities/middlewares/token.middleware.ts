@@ -24,4 +24,4 @@
 // };
 
 // export default tokenMiddleware;
-export default '';
+export const test = '';
