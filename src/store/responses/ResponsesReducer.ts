@@ -15,7 +15,7 @@ export interface IResponsesState {
   [key: string]: any;
 }
 
-export const buildResponsesReducer = (types: string[], items: IReducerItems): Reducer => {
+export const buildResponsesReducer = (types: string[], items?: IReducerItems): Reducer => {
   const generatedItems: IReducerItems = {};
   _.forEach(
     types,

@@ -11,9 +11,3 @@ export interface ISnackbarOptions {
   type?: TSnackbarTypes;
   icon?: IconProp;
 }
-
-export enum ELoginMethods {
-  'google' = 'google',
-  'ldap' = 'ldap',
-  'barcode' = 'barcode',
-}
