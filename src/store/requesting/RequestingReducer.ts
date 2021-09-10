@@ -7,7 +7,7 @@ import { IAction } from '@utilities';
 import { Reducer } from 'redux';
 
 const initialState: IRequestingState = {};
-const requestingReducer: Reducer = (state: IRequestingState = initialState, action: IAction<unknown>): IRequestingState => {
+export const requestingReducer: Reducer = (state: IRequestingState = initialState, action: IAction<unknown>): IRequestingState => {
   // We only take actions that include 'REQUEST_' in the type.
   const isRequestType: boolean = action.type.includes('REQUEST_');
 
@@ -26,8 +26,6 @@ const requestingReducer: Reducer = (state: IRequestingState = initialState, acti
     [requestName]: isFinishedRequestType === false,
   };
 };
-
-export default requestingReducer;
 
 export interface IRequestingState {
   readonly [key: string]: boolean;
