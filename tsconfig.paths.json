@@ -7,7 +7,8 @@
       // "@environments": ["src/environments", "node_modules/@mbss-react/core/src/environments"],
       "@helpers": ["src/helpers"],
       // "@models": ["src/models", "node_modules/@mbss-react/core/src/models"],
-      "@utilities": ["src/utilities"]
+      "@utilities": ["src/utilities"],
+      "@store": ["src/store"]
     }
   }
 }

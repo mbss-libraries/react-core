@@ -4,6 +4,8 @@ import commonjs from "@rollup/plugin-commonjs";
 import typescript from "rollup-plugin-typescript2";
 import postcss from "rollup-plugin-postcss";
 import json from "@rollup/plugin-json";
+// import tsPathsResolve from "rollup-plugin-ts-paths-resolve";
+
 
 
 const packageJson = require("./package.json");
@@ -25,6 +27,7 @@ export default {
   plugins: [
     peerDepsExternal(),
     resolve(),
+    // tsPathsResolve(),
     commonjs(),
     json(),
     typescript({ useTsconfigDeclarationDir: true }),

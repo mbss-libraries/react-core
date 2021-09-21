@@ -1,6 +1,6 @@
 {
   "name": "@mbss/react-core",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "A stroybook 6 with TypeScript demo",
   "main": "build/index.js",
   "module": "build/index.esm.js",
@@ -13,7 +13,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "---------- PRODUCTION -------------------------------------------------------------------------------------": "",
-    "build": "rollup -c",
+    "build": "rm -rf build && rollup -c",
     "prepare": "npm run build"
   },
   "np": {
@@ -48,6 +48,7 @@
     "rollup-plugin-npm": "^2.0.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.1",
+    "rollup-plugin-ts-paths-resolve": "^1.7.1",
     "rollup-plugin-typescript2": "^0.30.0",
     "typescript": "^4.4.2"
   },

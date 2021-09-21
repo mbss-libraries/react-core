@@ -5,3 +5,4 @@ export * from './sidenav/Sidenav';
 export * from './sidenav-item/SidenavItem';
 export * from './header/Header';
 export * from './page-header/PageHeader';
+export * from './page-loader/PageLoader';

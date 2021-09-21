@@ -1,6 +1,6 @@
 import { baseReducer, IAction, ErrorModel } from 'src/utilities';
 import { Reducer } from 'redux';
-import ErrorsAction from './ErrorsAction';
+import { ErrorsAction } from '.';
 
 const initialState: IErrorsState = {};
 export const errorsReducer: Reducer = baseReducer(initialState, {

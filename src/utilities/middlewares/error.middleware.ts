@@ -2,7 +2,7 @@
 
 import { IAction, ErrorModel } from '@utilities';
 import { Dispatch, Middleware } from 'redux';
-import ErrorsAction from 'src/store/errors/ErrorsAction';
+import { ErrorsAction } from 'src';
 
 export const errorMiddleware = (): Middleware => () => (next: Dispatch) => (action: IAction<any>): void => {
   if (action.error) {

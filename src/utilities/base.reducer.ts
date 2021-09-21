@@ -3,8 +3,8 @@
 import { IAction } from '@utilities';
 import { Reducer } from 'redux';
 
-type ReducerMethod<T> = (state: T, action: IAction<any>) => T;
-type ReducerMethods<T> = { [actionType: string]: ReducerMethod<T> };
+export type ReducerMethod<T> = (state: T, action: IAction<any>) => T;
+export type ReducerMethods<T> = { [actionType: string]: ReducerMethod<T> };
 
 export const baseReducer = <T = any>(initialState: T, methods: ReducerMethods<T>): Reducer<T> => {
   return (state: T = initialState, action: IAction<any>): T => {
