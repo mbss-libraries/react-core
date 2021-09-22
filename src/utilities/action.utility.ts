@@ -14,6 +14,11 @@ export const createThunkEffect = async <P>(
   const model: P | ErrorModel = await effect(args);
   const isError: boolean = model instanceof ErrorModel;
 
+  //* ----- If a request fails the actionType is stored in ErrorModel  -----
+  if (model instanceof ErrorModel) {
+    model.actionType = actionType;
+  }
+
   //* ----- If the response is 401 = Unauthorized the user logged out -----
   if (model instanceof ErrorModel && model.raw instanceof HttpError401Model) {
     dispatch({ type: 'AuthenticationAction.SET_LOGOUT_MANUAL' });

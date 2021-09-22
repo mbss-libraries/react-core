@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import axios, { AxiosRequestConfig, AxiosResponse, Method } from 'axios';
+import axios, { AxiosError, AxiosRequestConfig, AxiosResponse, Method } from 'axios';
 import _ from 'lodash';
 import { ErrorModel, HttpError401Model, HttpError404Model, HttpError422Model, HttpError500Model } from 'src/utilities';
 
@@ -113,42 +113,44 @@ export const _request = async (restRequest: Partial<Request>, config?: AxiosRequ
     return {
       ...axiosResponse,
     };
-  } catch (error) {
-    // if (error.response) {
-    //   // The request was made and the server responded with a status code that falls out of the range of 2xx
-    //   const { status } = error.response;
-    //   if (status === 500) {
-    //     const e = new HttpError500Model(error.response);
-    //     return _buildErrorModel(e, restRequest);
-    //   }
-    //   if (status === 401) {
-    //     const e = new HttpError401Model(error.response);
-    //     return _buildErrorModel(e, restRequest);
-    //   }
-    //   if (status === 404) {
-    //     const e = new HttpError404Model(error.response);
-    //     return _buildErrorModel(e, restRequest);
-    //   }
-    //   if (status === 422) {
-    //     const e = new HttpError422Model(error.response);
-    //     return _buildErrorModel(e, restRequest);
-    //   }
-    //   console.error('[HttpUtility] Error 2');
-    // } else if (error.request) {
-    // The request was made but no response was received `error.request` is an instance of XMLHttpRequest in the browser and an instance of http.ClientRequest in node.js
-    // const { statusText } = error.request;
-    // const model = new ErrorModel();
+  } catch (error: unknown | AxiosError) {
+    if (axios.isAxiosError(error)) {
+      if (error.response) {
+        // The request was made and the server responded with a status code that falls out of the range of 2xx
+        const { status } = error.response;
+        if (status === 500) {
+          const e = new HttpError500Model(error.response);
+          return _buildErrorModel(e, restRequest);
+        }
+        if (status === 401) {
+          const e = new HttpError401Model(error.response);
+          return _buildErrorModel(e, restRequest);
+        }
+        if (status === 404) {
+          const e = new HttpError404Model(error.response);
+          return _buildErrorModel(e, restRequest);
+        }
+        if (status === 422) {
+          const e = new HttpError422Model(error.response);
+          return _buildErrorModel(e, restRequest);
+        }
+        console.error('[HttpUtility] Error 2');
+      } else if (error.request) {
+        const { statusText } = error.request;
+        const model = new ErrorModel();
 
-    // model.title = statusText;
-    // if (error.message === 'Network Error') {
-    //   model.title = 'Backend could not be reached! Please try again later!';
-    // }
+        model.title = statusText;
+        if (error.message === 'Network Error') {
+          model.title = 'Backend could not be reached! Please try again later!';
+        }
 
-    // model.notifications = { analytics: true, snackbar: { type: 'danger' } };
-    // return model;
-    // }
-
+        model.notifications = { analytics: true, snackbar: { type: 'danger' } };
+        return model;
+      }
+    }
     console.error('[HttpUtility] Error 4');
+    console.log(error);
+
     // Something happened in setting up the request that triggered an Error
     // return _buildErrorModel(
     //   {
@@ -171,8 +173,8 @@ const _buildErrorModel = (
 ): ErrorModel => {
   const model = new ErrorModel();
   if (e instanceof HttpError500Model || e instanceof HttpError404Model) {
-    model.title = 'Bei der Anfrage ist ein Fehler aufgetreten!';
-    model.source = request.url || 'axioas';
+    model.title = e.data?.message ?? 'Bei der Anfrage ist ein Fehler aufgetreten!';
+    model.url = request.url || 'axioas';
     model.notifications = { analytics: true, snackbar: { type: 'danger' } };
   }
   if (e instanceof HttpError422Model) {
@@ -182,12 +184,12 @@ const _buildErrorModel = (
         model.title = e.data?.errors[Object.keys(e.data?.errors)[0]][0];
       }
     }
-    model.source = request.url || 'axioas';
+    model.url = request.url || 'axioas';
     model.notifications = { analytics: true, snackbar: { type: 'danger' } };
   }
   if (e instanceof HttpError401Model) {
     model.title = e.data?.message ?? 'Session abgelaufen!';
-    model.source = request.url || 'axioas';
+    model.url = request.url || 'axioas';
     model.notifications = { analytics: true, snackbar: { type: 'danger' } };
   }
 

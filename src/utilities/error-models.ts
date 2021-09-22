@@ -6,12 +6,14 @@ export class ErrorModel {
   public readonly id: string = uuidv4();
   public title = 'Unknown error!';
   public errors?: string[] = [];
-  public source = 'Unknown';
+  public actionType = 'Unknown';
+  public url = 'Unknown';
   public notifications?: {
     analytics?: boolean;
     snackbar?: ISnackbarOptions;
   };
   public raw?: unknown = undefined;
+  public readonly timestamp: number = Date.now();
 }
 
 class HttpErrorBaseModel extends BaseModel {
@@ -28,7 +30,7 @@ class HttpErrorBaseModel extends BaseModel {
 }
 
 export class HttpError500Model extends HttpErrorBaseModel {
-  public readonly data?: { message: string; exception: string; file: string; line: number } = undefined;
+  public readonly data?: { message: string; path?: string; stack?: string } = undefined;
 
   constructor(data: Partial<HttpError500Model>) {
     super(data);
