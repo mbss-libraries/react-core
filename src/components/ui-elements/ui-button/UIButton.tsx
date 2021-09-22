@@ -13,11 +13,12 @@ export interface UIButtonProps {
   leftIconStyle?: React.CSSProperties;
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, data: ButtonProps) => void;
   children?: React.ReactNode;
+  className?: string;
 }
 export const UIButton: React.FC<UIButtonProps> = (props: React.PropsWithChildren<UIButtonProps>) => {
-  const { size, color, leftIcon, leftIconStyle, onClick, children } = props;
+  const { size, color, leftIcon, leftIconStyle, onClick, className, children } = props;
   return (
-    <Button size={size} color={color} onClick={onClick}>
+    <Button size={size} color={color} onClick={onClick} className={className}>
       {leftIcon && <FontAwesomeIcon icon={leftIcon} style={{ marginRight: '1rem', ...leftIconStyle }} />}
       {children}
     </Button>

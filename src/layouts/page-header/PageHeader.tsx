@@ -20,7 +20,7 @@ export const PageHeader: React.FC<PageHeaderProps> = (props: React.PropsWithChil
       backIcon={onBack && <FontAwesomeIcon icon="chevron-left" />}
       onBack={onBack}
       title={
-        <div className="align-items-center" style={{ marginLeft: '1rem' }}>
+        <div className="align-items-center">
           {title && <div>{title}</div>}
           {subtitle && (
             <div className="ant-page-header-heading-sub-title" style={{ fontWeight: 1 }}>

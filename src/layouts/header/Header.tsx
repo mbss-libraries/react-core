@@ -15,10 +15,10 @@ export interface HeaderProps {
 export const Header: React.FC<HeaderProps> = (props: React.PropsWithChildren<HeaderProps>) => {
   const { children, className, onSidenavTriggerClick, backgroundColor, style } = props;
   return (
-    <Layout.Header className={className} style={{ backgroundColor: backgroundColor ?? '#FFF', paddingLeft: '1.5rem', ...style }}>
-      <div className="d-flex align-items-center" style={{ height: '100%' }}>
+    <Layout.Header className={className} style={{ backgroundColor: backgroundColor ?? '#FFF', ...style }}>
+      <div className="d-flex align-items-center" style={{ height: '100%', width: '100%' }}>
         {onSidenavTriggerClick && <FontAwesomeIcon className="trigger" icon="bars" onClick={onSidenavTriggerClick} />}
-        <div style={{ paddingLeft: '2rem' }}>{children}</div>
+        <div className="bg-black">{children}</div>
       </div>
     </Layout.Header>
   );

@@ -15,13 +15,14 @@ export interface SidenavProps {
   avatarContent?: React.ReactNode;
   avatarContentStyle?: React.CSSProperties;
   theme?: MenuTheme;
+  selectedRoutes?: string[];
   className?: string;
   logo?: React.ReactNode;
   children?: React.ReactNode;
 }
 
 export const Sidenav: React.FC<SidenavProps> = (props: React.PropsWithChildren<SidenavProps>) => {
-  const { collapsed, onCollapse, avatarContent, avatarContentStyle, theme, children, logo, className } = props;
+  const { collapsed, onCollapse, avatarContent, avatarContentStyle, theme, selectedRoutes, children, logo, className } = props;
 
   return (
     <Sider className={className} trigger={null} collapsible collapsed={collapsed} onCollapse={onCollapse}>
@@ -31,7 +32,7 @@ export const Sidenav: React.FC<SidenavProps> = (props: React.PropsWithChildren<S
           {avatarContent}
         </div>
       )}
-      <Menu theme={theme} mode="inline">
+      <Menu theme={theme} mode="inline" selectedKeys={selectedRoutes}>
         {children}
       </Menu>
     </Sider>
