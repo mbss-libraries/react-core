@@ -8,19 +8,26 @@ import 'semantic-ui-css/components/button.min.css';
 
 export interface UIButtonProps {
   size?: SemanticSIZES;
+  type?: 'default' | 'outlined';
+  disabled?: boolean;
   color?: SemanticCOLORS | 'facebook' | 'google plus' | 'vk' | 'twitter' | 'linkedin' | 'instagram' | 'youtube';
-  leftIcon?: IconProp;
-  leftIconStyle?: React.CSSProperties;
+  icon?: IconProp;
+  iconPosition?: 'right' | 'left';
+  iconStyle?: React.CSSProperties;
+  fill?: boolean;
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, data: ButtonProps) => void;
   children?: React.ReactNode;
   className?: string;
 }
 export const UIButton: React.FC<UIButtonProps> = (props: React.PropsWithChildren<UIButtonProps>) => {
-  const { size, color, leftIcon, leftIconStyle, onClick, className, children } = props;
+  const { size, color, fill, icon, iconStyle, onClick, disabled, className, children } = props;
+  const iconPosition = props.iconPosition ?? 'left';
+  const type = props.type ?? 'default';
   return (
-    <Button size={size} color={color} onClick={onClick} className={className}>
-      {leftIcon && <FontAwesomeIcon icon={leftIcon} style={{ marginRight: '1rem', ...leftIconStyle }} />}
+    <Button basic={type === 'outlined'} disabled={disabled} fluid={fill} size={size} color={color} onClick={onClick} className={className}>
+      {iconPosition === 'left' && icon && <FontAwesomeIcon icon={icon} style={{ marginRight: '1rem', ...iconStyle }} />}
       {children}
+      {iconPosition === 'right' && icon && <FontAwesomeIcon icon={icon} style={{ marginLeft: '1rem', ...iconStyle }} />}
     </Button>
   );
 };

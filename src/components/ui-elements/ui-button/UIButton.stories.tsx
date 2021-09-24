@@ -16,4 +16,7 @@ export const Basic = Template.bind({});
 Basic.args = { children: 'Placeholder' };
 
 export const Icon = Template.bind({});
-Icon.args = { leftIcon: 'star', children: 'Placeholder' };
+Icon.args = { icon: 'star', children: 'Placeholder' };
+
+export const Outlined = Template.bind({});
+Outlined.args = { type: 'outlined', children: 'Placeholder' };

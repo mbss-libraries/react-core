@@ -2,7 +2,7 @@
   "compilerOptions": {
     "paths": {
       // "@assets/*": ["src/assets/*"],
-      // "@components": ["src/components", "node_modules/@mbss-react/core/src/components"],
+      "@components": ["src/components"],
       "@hooks": ["src/hooks"],
       // "@environments": ["src/environments", "node_modules/@mbss-react/core/src/environments"],
       "@helpers": ["src/helpers"],
