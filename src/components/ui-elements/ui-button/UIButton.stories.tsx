@@ -4,7 +4,7 @@ import { Story } from '@storybook/react';
 import { UIButton, UIButtonProps } from './UIButton';
 
 export default {
-  title: 'UI - Elements/Button',
+  title: 'UI - Elements/UIButton',
   component: UIButton,
 } as Meta;
 
@@ -20,3 +20,6 @@ Icon.args = { icon: 'star', children: 'Placeholder' };
 
 export const Outlined = Template.bind({});
 Outlined.args = { type: 'outlined', children: 'Placeholder' };
+
+export const Tooltip = Template.bind({});
+Tooltip.args = { children: 'Placeholder', tooltip: 'Placeholder Tooltip' };

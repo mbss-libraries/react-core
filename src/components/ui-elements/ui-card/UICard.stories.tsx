@@ -4,7 +4,7 @@ import { Story } from '@storybook/react';
 import { UICard, UICardProps } from './UICard';
 
 export default {
-  title: 'UI - Elements/Card',
+  title: 'UI - Elements/UICard',
   component: UICard,
 } as Meta;
 

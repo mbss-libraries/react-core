@@ -5,6 +5,7 @@ import { Button, ButtonProps, SemanticCOLORS, SemanticSIZES } from 'semantic-ui-
 import '@fortawesome/fontawesome-free';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'semantic-ui-css/components/button.min.css';
+import Tooltip, { TooltipPlacement } from 'antd/lib/tooltip';
 
 export interface UIButtonProps {
   size?: SemanticSIZES;
@@ -14,20 +15,33 @@ export interface UIButtonProps {
   icon?: IconProp;
   iconPosition?: 'right' | 'left';
   iconStyle?: React.CSSProperties;
+  tooltip?: string;
+  tooltipPlacement?: TooltipPlacement;
   fill?: boolean;
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, data: ButtonProps) => void;
   children?: React.ReactNode;
   className?: string;
 }
 export const UIButton: React.FC<UIButtonProps> = (props: React.PropsWithChildren<UIButtonProps>) => {
-  const { size, color, fill, icon, iconStyle, onClick, disabled, className, children } = props;
+  const { size, color, fill, icon, iconStyle, tooltip, tooltipPlacement, onClick, disabled, className, children } = props;
   const iconPosition = props.iconPosition ?? 'left';
   const type = props.type ?? 'default';
-  return (
+
+  const buttonJSX = (
     <Button basic={type === 'outlined'} disabled={disabled} fluid={fill} size={size} color={color} onClick={onClick} className={className}>
       {iconPosition === 'left' && icon && <FontAwesomeIcon icon={icon} style={{ marginRight: '1rem', ...iconStyle }} />}
       {children}
       {iconPosition === 'right' && icon && <FontAwesomeIcon icon={icon} style={{ marginLeft: '1rem', ...iconStyle }} />}
     </Button>
   );
+
+  if (tooltip) {
+    return (
+      <Tooltip title={tooltip} placement={tooltipPlacement}>
+        {buttonJSX}
+      </Tooltip>
+    );
+  }
+
+  return buttonJSX;
 };
