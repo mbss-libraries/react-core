@@ -16,6 +16,13 @@ export class ErrorModel {
   public readonly timestamp: number = Date.now();
 }
 
+export class InvalidDataErrorModal extends ErrorModel {
+  constructor(title: string) {
+    super();
+    this.title = title;
+  }
+}
+
 class HttpErrorBaseModel extends BaseModel {
   public readonly status: number = 0;
   public readonly statusText: string = 'UNKNOWN';
