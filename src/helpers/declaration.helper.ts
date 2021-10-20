@@ -9,3 +9,7 @@ export interface ISnackbarOptions {
   type?: TSnackbarTypes;
   icon?: IconProp;
 }
+
+export interface IGlobalSelectorOptions {
+  withNavigation?: boolean;
+}

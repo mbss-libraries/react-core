@@ -4,3 +4,4 @@ export * from './size.helper';
 export * from './validation.helper';
 export * from './model.helper';
 export * from './request.helper';
+export * from './date.helper';

@@ -16,6 +16,10 @@ export class ErrorSelector {
       ),
     );
   };
+
+  public static hasErrors = (errorState: IErrorsState, actionTypes: string[]): boolean => {
+    return actionTypes.map((actionType: string) => errorState[actionType]).filter(Boolean).length > 0;
+  };
 }
 
 export const selectErrorsForSnackbar: Selector<_IStore, ErrorModel[]> = createSelector(
@@ -27,6 +31,12 @@ export const selectFirstErrorByActionType: ParametricSelector<_IStore, string, E
   (state: _IStore) => state.errors,
   (state: _IStore, actionType: string) => actionType,
   ErrorSelector.selectFirstErrorByActionType,
+);
+
+export const hasErrors: ParametricSelector<_IStore, string[], boolean> = createSelector(
+  (state: _IStore) => state.errors,
+  (state: _IStore, actionTypes: string[]) => actionTypes,
+  ErrorSelector.hasErrors,
 );
 
 interface _IStore {

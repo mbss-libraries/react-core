@@ -6,3 +6,4 @@ export * from './ui-avatar/UIAvatar';
 export * from './ui-avatar-group/UIAvatarGroup';
 export * from './ui-input/UIInput';
 export * from './ui-table/UITable';
+export * from './ui-tooltip/UITooltip';

@@ -14,3 +14,6 @@ const Template: Story<UIFormInputProps> = (args) => <UIFormInput {...args} />;
 // Reuse that template for creating different stories
 export const Basic = Template.bind({});
 Basic.args = { title: 'Placeholder:', subtitle: 'Placeholder', inputType: 'color' };
+
+export const Error = Template.bind({});
+Error.args = { subtitle: 'Placeholder', error: 'This field is required!' };

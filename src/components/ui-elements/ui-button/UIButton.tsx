@@ -5,7 +5,8 @@ import { Button, ButtonProps, SemanticCOLORS, SemanticSIZES } from 'semantic-ui-
 import '@fortawesome/fontawesome-free';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'semantic-ui-css/components/button.min.css';
-import Tooltip, { TooltipPlacement } from 'antd/lib/tooltip';
+import { TooltipPlacement } from 'antd/lib/tooltip';
+import { UITooltip } from '../ui-tooltip/UITooltip';
 
 export interface UIButtonProps {
   size?: SemanticSIZES;
@@ -29,17 +30,17 @@ export const UIButton: React.FC<UIButtonProps> = (props: React.PropsWithChildren
 
   const buttonJSX = (
     <Button basic={type === 'outlined'} disabled={disabled} fluid={fill} size={size} color={color} onClick={onClick} className={className}>
-      {iconPosition === 'left' && icon && <FontAwesomeIcon icon={icon} style={{ marginRight: '1rem', ...iconStyle }} />}
+      {iconPosition === 'left' && icon && <FontAwesomeIcon icon={icon} style={{ marginRight: children ? '1rem' : undefined, ...iconStyle }} />}
       {children}
-      {iconPosition === 'right' && icon && <FontAwesomeIcon icon={icon} style={{ marginLeft: '1rem', ...iconStyle }} />}
+      {iconPosition === 'right' && icon && <FontAwesomeIcon icon={icon} style={{ marginLeft: children ? '1rem' : undefined, ...iconStyle }} />}
     </Button>
   );
 
   if (tooltip) {
     return (
-      <Tooltip title={tooltip} placement={tooltipPlacement}>
+      <UITooltip title={tooltip} placement={tooltipPlacement}>
         {buttonJSX}
-      </Tooltip>
+      </UITooltip>
     );
   }
 

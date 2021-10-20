@@ -17,7 +17,7 @@ export interface UIModalProps {
 export const UIModal: React.FC<UIModalProps> = (props: React.PropsWithChildren<UIModalProps>) => {
   const { isOpen, onClose, title, titleClassName, children, className, style } = props;
   return (
-    <Dialog onClose={onClose} open={isOpen} className={className} style={style}>
+    <Dialog onClose={onClose} open={isOpen} className={className} style={{ ...style, ...{ maxWidth: undefined } }}>
       {title && <DialogTitle className={titleClassName}>{title}</DialogTitle>}
       <div className="px-3">{children}</div>
     </Dialog>

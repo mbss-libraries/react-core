@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { TValueOf } from '@helpers';
-import { ActionUtility, ErrorModel } from '@utilities';
-import { EmptyResponseModel } from '@store';
+import { ActionUtility, ErrorModel, ReduxDispatch } from '@utilities';
+import { EmptyResponseModel, IRequestAutosavePayload, ModelsEffect } from '@store';
 
 type ActionUnion = void | EmptyResponseModel | ErrorModel;
 
@@ -31,18 +31,13 @@ export class ModelsAction<T> {
     return ActionUtility.createAction(ModelsAction.DELETE_MODELS, models);
   }
 
-  // public static readonly REQUEST_AUTOSAVE: string = 'ModelsAction.REQUEST_AUTOSAVE';
-  // public static readonly REQUEST_AUTOSAVE_FINISHED: string = 'ModelsAction.REQUEST_AUTOSAVE_FINISHED';
-  // public static requestAutosave(payload: IRequestAutosavePayload): any {
-  //   return async (dispatch: ReduxDispatch<ActionUnion>) => {
-  //     await ActionUtility.createThunkEffect<RequestModelsResponseModel>(
-  //       dispatch,
-  //       ModelsAction.REQUEST_AUTOSAVE,
-  //       ModelsEffect.requestAutosave,
-  //       payload,
-  //     );
-  //   };
-  // }
+  public static readonly REQUEST_AUTOSAVE: string = 'ModelsAction.REQUEST_AUTOSAVE';
+  public static readonly REQUEST_AUTOSAVE_FINISHED: string = 'ModelsAction.REQUEST_AUTOSAVE_FINISHED';
+  public static requestAutosave(payload: IRequestAutosavePayload): any {
+    return async (dispatch: ReduxDispatch<ActionUnion>) => {
+      await ActionUtility.createThunkEffect<EmptyResponseModel>(dispatch, ModelsAction.REQUEST_AUTOSAVE, ModelsEffect.requestAutosave, payload);
+    };
+  }
 
   // public static readonly REQUEST_AUTO_LOAD_MODELS: string = 'ModelsAction.REQUEST_AUTO_LOAD_MODELS';
   // public static readonly REQUEST_AUTO_LOAD_MODELS_FINISHED: string = 'ModelsAction.REQUEST_AUTO_LOAD_MODELS_FINISHED';

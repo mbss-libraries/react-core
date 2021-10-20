@@ -14,7 +14,7 @@ const Template: Story<UITableProps> = (args) => <UITable {...args} />;
 // Reuse that template for creating different stories
 export const Basic = Template.bind({});
 Basic.args = {
-  className: 'w-100',
+  style: { width: '50vw' },
   searchable: true,
   pagination: true,
   header: [{ component: 'ID' }, { sortable: true, component: 'Name' }, { sortable: true, component: 'Age' }],
@@ -22,4 +22,19 @@ Basic.args = {
     [{ component: '1' }, { value: 'Max Mustermann', component: 'Max Mustermann' }, { value: 23, component: 23 }],
     [{ component: '2' }, { value: 'Hans Wurst', component: 'Hans Wurst' }, { value: 54, component: 54 }],
   ],
+};
+
+export const NoData = Template.bind({});
+NoData.args = {
+  style: { width: '50vw' },
+  header: [{ component: 'ID' }, { sortable: true, component: 'Name' }, { sortable: true, component: 'Age' }],
+  body: [],
+};
+
+export const Loading = Template.bind({});
+Loading.args = {
+  style: { width: '50vw' },
+  isLoading: true,
+  header: [{ component: 'ID' }, { sortable: true, component: 'Name' }, { sortable: true, component: 'Age' }],
+  body: [],
 };

@@ -6,20 +6,23 @@ import './UITable.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'semantic-ui-css/semantic.min.css';
 import { UIInput } from '../ui-input/UIInput';
+import { UISpinner } from '../ui-spinner/UISpinner';
 
 export interface UITableProps {
   header: ITableHeaderData[];
   body: ITableBodyData[][];
+  isLoading?: boolean;
   perPageDefault?: number;
   pagination?: boolean;
   searchable?: boolean;
   children?: React.ReactNode;
   className?: string;
+  style?: React.CSSProperties;
   onPerPageChange?: (value: number) => void;
 }
 
 export const UITable: React.FC<UITableProps> = (props: React.PropsWithChildren<UITableProps>) => {
-  const { header, searchable, pagination, body, perPageDefault, onPerPageChange, children, className } = props;
+  const { header, isLoading, searchable, pagination, body, perPageDefault, onPerPageChange, style, className } = props;
   const [perPage, setPerPage] = useState<number>(perPageDefault ?? 25);
   const [sortable, setSortable] = useState<ISortable | undefined>();
   const [page, setPage] = useState<number>(1);
@@ -30,7 +33,7 @@ export const UITable: React.FC<UITableProps> = (props: React.PropsWithChildren<U
   }, [perPage, onPerPageChange]);
 
   // const completeBody = useCallback(() => _.cloneDeep(body), [body]);
-  const generateBody = (): { data: ITableBodyData[][]; totalPages?: number } => {
+  const generateBody = (): { data: ITableBodyData[][]; totalPages?: number; items: number } => {
     let data = [...body];
     if (searchable) {
       const toRemove: number[] = [];
@@ -54,6 +57,7 @@ export const UITable: React.FC<UITableProps> = (props: React.PropsWithChildren<U
       );
     }
 
+    let items = data.length;
     let totalPages = 0;
     if (pagination && perPage && data.length > 0) {
       totalPages = Math.ceil(data.length / perPage);
@@ -65,14 +69,16 @@ export const UITable: React.FC<UITableProps> = (props: React.PropsWithChildren<U
       data = data.slice(startIndex, endIndex);
     }
 
-    return { data, totalPages };
+    return { data, totalPages, items };
   };
 
-  const { data, totalPages } = generateBody();
+  const { data, totalPages, items } = generateBody();
   return (
     <Fragment>
-      <div className="row align-content-center">
-        <div className="col" />
+      <div className="row align-content-center" style={style}>
+        <div className="col">
+          <div className="h-100 ml-2 d-flex justify-content-start align-items-end text-muted">Items: {items}</div>
+        </div>
         {searchable ? (
           <UIInput
             value={search}
@@ -134,14 +140,22 @@ export const UITable: React.FC<UITableProps> = (props: React.PropsWithChildren<U
               </Table.Row>
             ))}
         </Table.Body>
-        {data.length == 0 && (
+        {(data.length == 0 || isLoading) && (
           <Table.Footer fullWidth>
             <Table.Row>
               <Table.HeaderCell colSpan="12" className="p-5">
-                <div className="d-flex justify-content-center align-items-center">
-                  <FontAwesomeIcon icon="file" size="3x" className="text-muted mr-5" />
-                  <div className="h4 mt-2">No data available ...</div>
-                </div>
+                {isLoading && (
+                  <div className="text-center">
+                    <UISpinner size={36} />
+                    <div className="h4 mt-4">Loading ...</div>
+                  </div>
+                )}
+                {data.length == 0 && !isLoading && (
+                  <div className="d-flex justify-content-center align-items-center">
+                    <FontAwesomeIcon icon="file" size="3x" className="text-muted mr-5" />
+                    <div className="h4 mt-2">No data available ...</div>
+                  </div>
+                )}
               </Table.HeaderCell>
             </Table.Row>
           </Table.Footer>
