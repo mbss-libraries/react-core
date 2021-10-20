@@ -7,3 +7,6 @@ export * from './ui-avatar-group/UIAvatarGroup';
 export * from './ui-input/UIInput';
 export * from './ui-table/UITable';
 export * from './ui-tooltip/UITooltip';
+export * from './ui-alert/UIAlert';
+export * from './ui-snackbar/UISnackbar';
+export * from './ui-error-snackbar/UIErrorSnackbar';
