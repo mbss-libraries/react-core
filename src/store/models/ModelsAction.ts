@@ -7,13 +7,13 @@ import { EmptyResponseModel, IRequestAutosavePayload, ModelsEffect } from '@stor
 type ActionUnion = void | EmptyResponseModel | ErrorModel;
 
 export class ModelsAction<T> {
-  // public static readonly DELETE_MODEL: string = 'ModelsAction.DELETE_MODEL';
-  // public static readonly DELETE_MODEL_FINISHED: string = 'ModelsAction.DELETE_MODEL_FINISHED';
-  // public static deleteModel(path: string): any {
-  //   return async (dispatch: ReduxDispatch<ActionUnion>) => {
-  //     await ActionUtility.createThunkEffect<EmptyResponseModel>(dispatch, ModelsAction.DELETE_MODEL, ModelsEffect.deleteModel, path);
-  //   };
-  // }
+  public static readonly REQUEST_DELETE_MODEL: string = 'ModelsAction.REQUEST_DELETE_MODEL';
+  public static readonly REQUEST_DELETE_MODEL_FINISHED: string = 'ModelsAction.REQUEST_DELETE_MODEL_FINISHED';
+  public static deleteModel(path: string): any {
+    return async (dispatch: ReduxDispatch<ActionUnion>) => {
+      await ActionUtility.createThunkEffect<EmptyResponseModel>(dispatch, ModelsAction.REQUEST_DELETE_MODEL, ModelsEffect.deleteModel, path);
+    };
+  }
 
   /**
    * T => TModels

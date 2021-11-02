@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import _ from 'lodash';
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, RefObject, useEffect, useImperativeHandle, useState } from 'react';
 import { Pagination, Table } from 'semantic-ui-react';
 import './UITable.css';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -9,6 +9,7 @@ import { UIInput } from '../ui-input/UIInput';
 import { UISpinner } from '../ui-spinner/UISpinner';
 
 export interface UITableProps {
+  ref?: RefObject<UITableHandler>
   header: ITableHeaderData[];
   body: ITableBodyData[][];
   isLoading?: boolean;
@@ -20,13 +21,22 @@ export interface UITableProps {
   style?: React.CSSProperties;
   onPerPageChange?: (value: number) => void;
 }
+export interface UITableHandler {
+  setSearch?: (value: string) => void;
+}
 
-export const UITable: React.FC<UITableProps> = (props: React.PropsWithChildren<UITableProps>) => {
+const _UITable: React.ForwardRefRenderFunction<UITableHandler, UITableProps> = (props, ref) => {
   const { header, isLoading, searchable, pagination, body, perPageDefault, onPerPageChange, style, className } = props;
   const [perPage, setPerPage] = useState<number>(perPageDefault ?? 25);
   const [sortable, setSortable] = useState<ISortable | undefined>();
   const [page, setPage] = useState<number>(1);
   const [search, setSearch] = useState<string | undefined>();
+
+  useImperativeHandle(ref, () => ({
+    setSearch(value: string) {
+      setSearch(value)
+    }
+  }));
 
   useEffect(() => {
     if (onPerPageChange) onPerPageChange(perPage);
@@ -169,6 +179,7 @@ export const UITable: React.FC<UITableProps> = (props: React.PropsWithChildren<U
     </Fragment>
   );
 };
+export const UITable = React.forwardRef(_UITable);
 
 export interface ITableHeaderData {
   sortable?: boolean;

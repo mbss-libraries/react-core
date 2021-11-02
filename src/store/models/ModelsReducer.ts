@@ -37,6 +37,17 @@ export const buildModelsMethods = <T>(): ReducerMethods<any> => {
 
       return _state;
     },
+    // [ModelsAction.DELETE_MODELS](state: IModelsState<T>, action: IAction<{ [key in keyof T]?: string[] }>): IModelsState<T> {
+    //   const _state = { ...state };
+    //   _.forEach(action.payload, (ids, type) => {
+    //     if (ids !== undefined) {
+    //       const filtered = _.filter(_state[type], (model) => !ids.includes(model.id));
+    //       _state[type] = _.keyBy(filtered, 'id') as any;
+    //     }
+    //   });
+
+    //   return _state;
+    // },
   };
 };
 

@@ -10,6 +10,7 @@ import { BaseModel } from 'sjs-base-model';
  */
 
 export class EmptyResponseModel extends BaseModel {
+  public readonly delete?: { [key: string]: string[] } = undefined
   /*
    * Client-Side properties (Not from API)
    */

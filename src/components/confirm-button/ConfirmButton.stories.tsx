@@ -1,15 +1,15 @@
 import React from "react";
 import { Meta } from "@storybook/react/types-6-0";
 import { Story } from "@storybook/react";
-import { UITooltip, UITooltipProps } from "./UITooltip";
+import { ConfirmButton, ConfirmButtonProps } from "./ConfirmButton";
 
 export default {
-  title: "UI - Elements/UITooltip",
-  component: UITooltip,
+  title: "Other/ConfirmButton",
+  component: ConfirmButton,
 } as Meta;
 
 // Create a master template for mapping args to render the Button component
-const Template: Story<UITooltipProps> = (args) => <UITooltip {...args} />;
+const Template: Story<ConfirmButtonProps> = (args) => <ConfirmButton {...args} />;
 
 // Reuse that template for creating different stories
 export const Basic = Template.bind({});

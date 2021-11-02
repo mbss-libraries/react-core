@@ -15,6 +15,7 @@ export interface IValidationResult {
 //* ------ NEW VALIDATION RULES --------
 export abstract class BaseValidation {
   public message = 'This field is invalid';
+  // protected isValid?: boolean = undefined;
 
   constructor(message?: string) {
     if (message) this.message = message;
