@@ -173,22 +173,23 @@ const _buildErrorModel = (
 ): ErrorModel => {
   const model = new ErrorModel();
   if (e instanceof HttpError500Model || e instanceof HttpError404Model) {
-    model.title = e.data?.message ?? 'Bei der Anfrage ist ein Fehler aufgetreten!';
+    model.title = e.data?.message ?? 'An error occurred during the request!';
     model.url = request.url || 'axioas';
     model.notifications = { analytics: true, snackbar: { type: 'danger' } };
   }
   if (e instanceof HttpError422Model) {
-    model.title = 'Fehlerhafte Eingabe!';
-    if (_.size(e.data?.errors) === 1) {
-      if (e.data?.errors[Object.keys(e.data?.errors)[0]][0]) {
-        model.title = e.data?.errors[Object.keys(e.data?.errors)[0]][0];
-      }
-    }
+    model.title = 'Incorrect input!';
+    model.errors = e.data?.message.split(';');
+    // if (_.size(e.data?.errors) === 1) {
+    //   if (e.data?.errors[Object.keys(e.data?.errors)[0]][0]) {
+    //     model.title = e.data?.errors[Object.keys(e.data?.errors)[0]][0];
+    //   }
+    // }
     model.url = request.url || 'axioas';
     model.notifications = { analytics: true, snackbar: { type: 'danger' } };
   }
   if (e instanceof HttpError401Model) {
-    model.title = e.data?.message ?? 'Session abgelaufen!';
+    model.title = e.data?.message ?? 'Session expired!';
     model.url = request.url || 'axioas';
     model.notifications = { analytics: true, snackbar: { type: 'danger' } };
   }

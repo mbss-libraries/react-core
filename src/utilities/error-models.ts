@@ -14,6 +14,7 @@ export class ErrorModel {
   };
   public raw?: unknown = undefined;
   public readonly timestamp: number = Date.now();
+  public confirmed: boolean = false;
 }
 
 export class InvalidDataErrorModal extends ErrorModel {

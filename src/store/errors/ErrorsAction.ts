@@ -10,4 +10,9 @@ export class ErrorsAction {
   public static remove(id: string): IAction<string> {
     return ActionUtility.createAction(ErrorsAction.REMOVE, id);
   }
+
+  public static readonly CONFIRM: string = 'ErrorsAction.CONFIRM';
+  public static confirm(id: string): IAction<string> {
+    return ActionUtility.createAction(ErrorsAction.CONFIRM, id);
+  }
 }

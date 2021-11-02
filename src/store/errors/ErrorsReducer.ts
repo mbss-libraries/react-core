@@ -12,9 +12,12 @@ export const errorsReducer: Reducer = baseReducer(initialState, {
   },
   [ErrorsAction.REMOVE](state: IErrorsState, action: IAction<string>): IErrorsState {
     const _state = { ...state };
-    if (action.payload) {
-      delete _state[action.payload];
-    }
+    if (action.payload) delete _state[action.payload];
+    return _state;
+  },
+  [ErrorsAction.CONFIRM](state: IErrorsState, action: IAction<string>): IErrorsState {
+    const _state = { ...state };
+    if (action.payload) _state[action.payload] = { ..._state[action.payload], confirmed: true };
     return _state;
   },
 });

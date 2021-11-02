@@ -1,11 +1,11 @@
-import { ErrorModel } from '@utilities';
+import { ErrorModel } from '../../utilities/error-models';
 import _ from 'lodash';
 import { createSelector, ParametricSelector, Selector } from 'reselect';
 import { IErrorsState } from './ErrorsReducer';
 
 export class ErrorSelector {
   public static selectErrorsForSnackbar(state: _IStore): ErrorModel[] {
-    return _.filter(state.errors, (error) => error.notifications?.snackbar !== undefined);
+    return _.filter(state.errors, (error) => error.notifications?.snackbar !== undefined && !error.confirmed);
   }
 
   public static selectFirstErrorByActionType = (errorState: IErrorsState, actionType: string): ErrorModel | undefined => {
