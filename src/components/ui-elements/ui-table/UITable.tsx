@@ -95,6 +95,7 @@ const _UITable: React.ForwardRefRenderFunction<UITableHandler, UITableProps> = (
             prefix={<FontAwesomeIcon icon="search" className="text-muted mr-2" />}
             className="col"
             placeholder="Search..."
+            allowClear
             onChange={(e) => setSearch(e.target.value)}
           />
         ) : (
